@@ -26,7 +26,6 @@ VALUES ('Michael Jackson', 'Thriller', 1982, 48.9, 'Pop'),
        ('Pink Floyd', 'The Wall', 1979, 18.7, 'Progressive rock'),
        ('James Horner', 'Titanic: Soundtrack', 1997, 18.1, 'Film Score'),
        ('Dire Straits', 'Brothers in Arms', 1985, 17.7, 'Roots rock'),
-       ('Dire Straits', 'Brothers in Arms', 1985, 17.7, 'Roots rock'),
        ('Nirvana', 'Nevermind', 1991, 16.7, 'Grunge'),
        ('Santana', 'Supernatural', 1999, 20.5, 'Latin rock'),
        ('Guns N Roses', 'Appetite for Destruction', 1987, 21.9, 'Hard rock');
