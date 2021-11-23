@@ -58,3 +58,64 @@ FROM users
 JOIN roles ON users.role_id = roles.id
 GROUP BY roles.id
 ORDER BY COUNT(role_id) DESC;
+
+
+USE employees;
+
+SELECT * FROM employees;
+SELECT * FROM dept_manager;
+
+#Joins all department managers
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS dept_man_name, d.dept_name
+FROM employees AS e
+JOIN dept_manager AS de_m
+ON de_m.emp_no = e.emp_no
+JOIN departments AS d
+ON de_m.dept_no = d.dept_no
+WHERE de_m.to_date = '9999-01-01';
+
+
+#Joins all female current managers
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS Department_Manager, d.dept_name
+FROM employees AS e
+JOIN dept_manager AS de_m
+  ON de_m.emp_no = e.emp_no
+JOIN departments AS d
+  ON de_m.dept_no = d.dept_no
+WHERE e.gender = 'F' AND de_m.to_date = '9999-01-01';
+
+SELECT * FROM titles;
+
+#Counts the number of employees with each respective title
+SELECT t.title AS Title, COUNT(t.emp_no) AS Count
+FROM titles AS t
+JOIN dept_emp AS de ON t.emp_no = de.emp_no
+JOIN departments AS d ON de.dept_no = d.dept_no
+WHERE d.dept_name = 'Customer Service'
+AND t.to_date = '9999-01-01'
+AND de.to_date = '9999-01-01'
+GROUP BY t.title;
+
+#Display Dept Manager, Dept Name, and Salary
+SELECT d.dept_name AS 'Department Name',
+       CONCAT(e.first_name,' ',e.last_name) AS 'Department Manager',
+       s.salary AS Salary
+FROM employees AS e
+JOIN dept_manager AS dm ON e.emp_no = dm.emp_no
+JOIN departments AS d ON dm.dept_no = d.dept_no
+JOIN salaries AS s ON e.emp_no = s.emp_no
+WHERE dm.to_date = '9999-01-01'
+AND s.to_date = '9999-01-01'
+ORDER BY dept_name;
+
+
+#Displays count of employees with specific title
+SELECT titles.title, COUNT(*)
+FROM titles
+JOIN employees ON titles.emp_no = employees.emp_no
+GROUP BY titles.title
+ORDER BY COUNT(title) DESC;
+
+
+
+
